@@ -1,7 +1,7 @@
 package Ahorcado;
 
 import java.util.Arrays;
-
+ 
 public class Ahorcado {
 
 	private static String[]diccionario ={"hola","programar","teclado","aplicaciones"};
