@@ -4,7 +4,7 @@ import java.util.Arrays;
  
 public class Ahorcado {
  
-	private static String[]diccionario ={"hola","programar","teclado","aplicacion"};
+	private static String[]diccionario ={"hola","programar","tecla","aplicacion"};
 	private String adivinar;
 	private char[] intentado;
 	private int fallos;
