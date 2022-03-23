@@ -1,0 +1,81 @@
+package Agenda;
+
+public class Contacto {
+	
+	
+	private String nombre;
+	private int tel;
+	
+	public Contacto(String nombre, int tel) {
+		super();
+		this.nombre = nombre;
+		this.tel = tel;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getTel() {
+		return tel;
+	}
+
+	public void setTel(int tel) {
+		this.tel = tel;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Contacto [nombre=");
+		builder.append(nombre);
+		builder.append(", tel=");
+		builder.append(tel);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + tel;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Contacto other = (Contacto) obj;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (tel != other.tel)
+			return false;
+		return true;
+	}
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+}

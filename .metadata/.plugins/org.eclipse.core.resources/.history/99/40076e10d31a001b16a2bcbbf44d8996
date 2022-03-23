@@ -1,0 +1,24 @@
+/**
+ * 
+ */
+package IntroduccionProgramacion;
+
+/**
+ * @author emilio
+ *
+ */
+public class ejercicio8 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		int n2=30, suma=0, n3=20,n1=10;
+		suma=n1+n2;
+		System.out.println("LA SUMA ES: " + suma);
+		suma=suma+n3;
+		System.out.println(suma);
+
+	}
+
+}

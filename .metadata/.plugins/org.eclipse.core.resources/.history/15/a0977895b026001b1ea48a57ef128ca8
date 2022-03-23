@@ -1,0 +1,29 @@
+/**
+ * 
+ */
+package EstructurasDeControl;
+
+import java.util.Scanner;
+
+/**
+ * @author emili
+ *
+ */
+public class ejercicio9 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Scanner teclado=new Scanner(System.in);
+		int num,cont,i=1;
+		System.out.println("Introduzca un numero");
+		num=teclado.nextInt();
+		for(cont=0;num>cont;cont++){
+			i=i*num;
+			i++;
+		}
+		System.out.println(i);
+	}
+
+}

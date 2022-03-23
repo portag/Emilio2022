@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+package IntroduccionProgramacion;
+
+/**
+ * @author emilio
+ *
+ */
+public class ejercicio5 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		int PI;
+		PI=2;
+		System.out.println(PI);
+
+	}
+
+}

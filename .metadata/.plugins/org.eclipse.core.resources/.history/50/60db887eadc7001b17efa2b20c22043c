@@ -1,0 +1,112 @@
+package Agenda;
+
+import java.util.ArrayList;  //importamos un arrayList
+import java.util.List;
+import java.util.Scanner;
+public class Agenda {
+	static ArrayList<Contacto> Agenda = new ArrayList<Contacto>();
+	
+	public Agenda() {
+		Agenda=new ArrayList<>();
+	}
+	
+	public static boolean existe(Contacto c) {
+		for (Contacto cont : Agenda) {
+			if (cont.equals(c))
+				return true;
+		}
+		return false;
+	}
+	
+	public static boolean lleno() {
+		int tamano=10;
+		boolean lleno=false;
+			if(tamano == Agenda.size())
+				lleno = true;
+		return lleno;
+	}
+	
+	public static boolean addcontacto(Contacto c) {
+		if(!existe(c)) {
+			Agenda.add(c);
+			return true;
+		}
+		return false;
+	}
+	
+	public int libre() {
+		int tamano=10;
+		int libre = tamano - Agenda.size();
+		return libre;
+	}
+	
+	public static void listado() {
+		StringBuffer sb = new StringBuffer();
+		for(Contacto cont : Agenda) {
+			sb.append(cont+"/n");
+		}
+	}
+	
+	public List<Contacto> buscar(String nombre) {
+		List<Contacto> contactos = new ArrayList<>();
+		for (Contacto cont : Agenda) {
+			if(cont.getNombre().toLowerCase().indexOf(nombre.toLowerCase()) > 0) {
+				contactos.add(cont);
+			}
+		}
+		return contactos;
+	}
+	
+	public void borrar(String nombre) {
+		for (int i = 0; i < Agenda.size(); i++) {
+			Agenda.get(i);
+			if (nombre.equals(Contacto.class))
+				Agenda.remove(i);
+			else {
+				System.out.println("El contacto no existe");
+			}
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		
+		Scanner sc=new Scanner(System.in);
+		int opcion = 0;
+    	do {
+    		
+    		System.out.println("AGENDA TELEFÓNICA");
+    		System.out.println("---------------------");
+    		System.out.println("1.Añadir contacto");
+    		System.out.println("2.Listado de contactos");
+    		System.out.println("3.Buscar contacto");
+    		System.out.println("4.Eliminar contacto");
+    		System.out.println("Estado de la agenda");
+    		System.out.println("6.Salir");
+    		System.out.println("");
+    		System.out.println("Elige una opción: ");
+   
+    		
+    		opcion=sc.nextInt();
+    		
+    		switch (opcion) {
+			case 1: 
+				String nombre=sc.next();
+				int tel=sc.nextInt();
+				Contacto c = new Contacto(nombre,tel);
+				addcontacto(c);
+				break;
+			case 2:
+				listado();
+				break;
+			default:
+				System.out.println("ERROR");
+			}
+    		
+		} while (opcion!=6);
+        
+    }
+}
+
+

@@ -1,0 +1,23 @@
+/**
+ * 
+ */
+package IntroduccionProgramacion;
+
+/**
+ * @author emilio
+ *
+ */
+public class ejercicio3 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		int a,b,c,d,e,f,g;
+		boolean resultado;
+		resultado=(a>2);
+		
+
+	}
+
+}

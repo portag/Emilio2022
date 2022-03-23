@@ -1,0 +1,5 @@
+package FechasUtils;
+
+public enum Signo {
+	ARIES, TAURO, GÉMINIS, CÁNCER, LEO, VIRGO, LIBRA, ESCORPIO,SAGITARIO, CAPRICORNIO, ACUARIO, PISCIS
+}

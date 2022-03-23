@@ -1,0 +1,91 @@
+package Agenda;
+
+import java.util.ArrayList;  //importamos un arrayList
+import java.util.Iterator;
+
+public class Contacto {
+	
+	
+	private String nombre;
+	private int tel;
+	static ArrayList<Contacto> Agenda = new ArrayList<Contacto>();
+	
+	
+	
+	public Contacto(String nombre, int tel) {
+		super();
+		this.nombre = nombre;
+		this.tel = tel;
+	}
+	
+	public static boolean existe(Contacto c) {
+		boolean existe=false;
+		for (int i = 0; i < Agenda.size(); i++) {
+			if(Agenda.get(i)==c)
+				existe= true;
+		
+		}
+		return existe;
+	}
+	
+	public static boolean lleno() {
+		int tamano=10;
+		boolean lleno=false;
+			if(tamano == Agenda.size())
+				lleno = true;
+		return lleno;
+	}
+	
+	public void addcontacto(Contacto c) {
+		if(!Contacto.lleno())
+			if(!Contacto.existe(c))
+			Agenda.add(c);
+			else {
+				System.out.println("El contacto existe");
+			}
+		else {
+			System.out.println("La agenda esta llena");
+		}
+	}
+	
+	public int libre() {
+		int tamano=10;
+		int libre = tamano - Agenda.size();
+		return libre;
+	}
+	
+	public void listado() {
+		for (int i = 0; i < Agenda.size(); i++) {
+			Agenda.get(i);
+		}
+	}
+	
+	public int buscar(String nombre) {
+		for (int i = 0; i < Agenda.size(); i++) {
+			Agenda.get(i);
+			if (nombre.equals(this.nombre))
+				return this.tel;
+			else {
+				System.out.println("El contacto no existe");
+			}
+		}
+		return tel;
+	}
+	
+	public void borrar(String nombre) {
+		for (int i = 0; i < Agenda.size(); i++) {
+			Agenda.get(i);
+			if (nombre.equals(this.nombre))
+				Agenda.remove(i);
+			else {
+				System.out.println("El contacto no existe");
+			}
+		}
+	}
+	
+
+	
+	
+	
+	
+}

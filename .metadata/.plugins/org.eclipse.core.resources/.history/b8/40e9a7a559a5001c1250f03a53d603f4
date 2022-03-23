@@ -1,0 +1,112 @@
+package tienda;
+
+import java.time.LocalDateTime;
+
+import java.util.ArrayList;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
+public class Pedido {
+
+	
+	private static int codPedido = 1;
+	private int codigo;
+	ArrayList<LineaPedido> linea;
+	private LocalDateTime fecha;
+	private double total; //hay que calcularlo
+	private Cliente cliente; //hay que usar setCliente
+	
+	
+	public Pedido() {
+		super();
+		this.codigo = Pedido.codPedido;
+		Pedido.codPedido++;
+		this.fecha = LocalDateTime.now();
+		this.linea = new ArrayList<>();
+		this.total = 0;
+	}
+	
+	/**
+	 * Constructor con cliente
+	 * @param cliente
+	 */
+	public Pedido(Cliente cliente) {
+		super();
+		this.codigo = Pedido.codPedido;
+		Pedido.codPedido++;
+		this.fecha = LocalDateTime.now();
+		this.linea = new ArrayList<>();
+		this.cliente = cliente;
+		this.total = 0;
+	}
+	
+	
+	/**
+	 * devuelve el precio total
+	 * @return
+	 */
+	public double total() {
+		//el total se actualiza cada vez que se añade una nueva linea pedido con el metodo nueva linea
+		return this.total-this.cliente.descuento();
+	}
+	
+	/**
+	 * Devuelve el arraylist
+	 * @return
+	 */
+	public ArrayList<LineaPedido> getLineas() {
+		return this.linea;
+	}
+	
+	public void nuevaLinea(LineaPedido lp) {
+		//en caso de haber una lina igual la fusiona en vez de añadirla
+		boolean encontrado = false;
+		for(LineaPedido li : linea) {
+			if(li.getProducto().equals(lp.getProducto())) {
+				encontrado = true;
+				li.setCantidad(li.getCantidad()+lp.getCantidad());
+				this.total += lp.subtotal();
+			}
+		}
+		if(!encontrado) {
+			linea.add(lp);
+			this.total += lp.subtotal();
+		}
+		
+		
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Pedido: ");
+		builder.append(codigo);
+		//salto de linea
+		builder.append("\n");
+		for(LineaPedido li : linea) {
+			builder.append("Prod: ");
+			builder.append(li.getProducto().getCodigo());
+			builder.append(" precio: ");
+			builder.append(li.getProducto().getPrecio());
+			builder.append(" cantidad: ");
+			builder.append(li.getCantidad());
+			builder.append(" subtotal: ");
+			builder.append(li.subtotal());
+			builder.append("€ \n");
+		}
+		builder.append("Total: ");
+		builder.append(total());
+		builder.append("€ \n");
+		return builder.toString();
+	}
+	
+	
+	
+	
+	
+}
